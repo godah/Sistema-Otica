@@ -6,6 +6,7 @@ import controller.util.JsfUtil.PersistAction;
 import bean.PedidoFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -19,6 +20,8 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import model.Itenspedido;
+import model.Produto;
 
 @Named("pedidoController")
 @SessionScoped
@@ -27,6 +30,8 @@ public class PedidoController implements Serializable {
     @EJB
     private bean.PedidoFacade ejbFacade;
     private List<Pedido> items = null;
+    private List<Itenspedido> itensTemp = null;
+    private Produto prodTemp;
     private Pedido selected;
 
     public PedidoController() {
@@ -51,6 +56,7 @@ public class PedidoController implements Serializable {
     }
 
     public Pedido prepareCreate() {
+        prodTemp = new Produto();
         selected = new Pedido();
         initializeEmbeddableKey();
         return selected;
@@ -122,6 +128,20 @@ public class PedidoController implements Serializable {
         return getFacade().findAll();
     }
 
+    /**
+     * @return the prodTemp
+     */
+    public Produto getProdTemp() {
+        return prodTemp;
+    }
+
+    /**
+     * @param prodTemp the prodTemp to set
+     */
+    public void setProdTemp(Produto prodTemp) {
+        this.prodTemp = prodTemp;
+    }
+
     @FacesConverter(forClass = Pedido.class)
     public static class PedidoControllerConverter implements Converter {
 
@@ -176,5 +196,20 @@ public class PedidoController implements Serializable {
 
         System.out.println(selected.getCodigo() + " " +selected.getData() + " " + selected.getDatahora());
        
+    }
+    
+    public List<Itenspedido> getItensTemp(){
+        itensTemp = new ArrayList<>();
+        
+        selected.setIdpedidos(1);
+        Itenspedido iTemp = new Itenspedido();
+        iTemp.setIditenspedidos(1231); 
+        iTemp.setQuantidade((double)21);
+        iTemp.setProdutoIdprodutos(prodTemp);
+        iTemp.setPedidoIdpedidos(selected);
+        
+        itensTemp.add(iTemp);
+        
+        return itensTemp;
     }
 }
