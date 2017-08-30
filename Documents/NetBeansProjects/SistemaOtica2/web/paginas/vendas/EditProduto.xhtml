@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ItenspedidosEditDlg" widgetVar="ItenspedidosEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditItenspedidosTitle}">
+            <h:form id="ItenspedidosEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{itenspedidosController.selected != null}">
+                        
+                        <p:outputLabel value="Código" for="codigo" />
+                        <p:inputText id="codigo" 
+                                     value="#{itenspedidosController.selected.produtos.codigo}"
+                                     disabled="true"/>
+                        
+                        <p:outputLabel value="Descrição" for="descricao" />
+                        <p:inputText id="descricao" 
+                                     value="#{itenspedidosController.selected.produtos.descricao}"
+                                     disabled="true"/>
+                        
+                        <p:outputLabel value="#{bundle.EditItenspedidosLabel_quantidade}" for="quantidade" />
+                        <p:inputText id="quantidade" value="#{itenspedidosController.selected.quantidade}" title="#{bundle.EditItenspedidosTitle_quantidade}" />
+                       
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{itenspedidosController.update}" value="#{bundle.Save}" update="display,:vendaForm:ItenspedidosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ItenspedidosEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ItenspedidosEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

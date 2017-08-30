@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListReceitaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ReceitaListForm">
+                <p:panel header="#{bundle.ListReceitaTitle}">
+                    <p:dataTable id="datalist" value="#{receitaController.items}" var="item"
+                                 selectionMode="single" selection="#{receitaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idreceitas}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_idreceitas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idreceitas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_data}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.data}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_dnpod}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dnpod}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_dnpoe}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dnpoe}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_aco}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aco}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_dpa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dpa}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_dm}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dm}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_vert}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vert}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_ad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_lodesf}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lodesf}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_lodcil}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lodcil}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_lodeixo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lodeixo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_loeesf}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.loeesf}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_loecil}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.loecil}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_loeeixo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.loeeixo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_podesf}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.podesf}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_podcil}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.podcil}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_podeixo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.podeixo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_poeesf}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.poeesf}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_poecil}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.poecil}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_poeeixo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.poeeixo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_observacao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacao}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_obsreceita}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.obsreceita}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_clienteIdclientes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clienteIdclientes}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_medicoIdmedicos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.medicoIdmedicos}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReceitaTitle_usuarioIdusuarios}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuarioIdusuarios}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{receitaController.prepareCreate}" update=":ReceitaCreateForm" oncomplete="PF('ReceitaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ReceitaViewForm" oncomplete="PF('ReceitaViewDialog').show()" disabled="#{empty receitaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ReceitaEditForm" oncomplete="PF('ReceitaEditDialog').show()" disabled="#{empty receitaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{receitaController.destroy}" update=":growl,datalist" disabled="#{empty receitaController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FornecedorViewDlg" widgetVar="FornecedorViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFornecedorTitle}">
+            <h:form id="FornecedorViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fornecedorController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFornecedorLabel_idfornecedores}"/>
+                        <h:outputText value="#{fornecedorController.selected.idfornecedores}" title="#{bundle.ViewFornecedorTitle_idfornecedores}"/>
+                        <h:outputText value="#{bundle.ViewFornecedorLabel_cnpjcpf}"/>
+                        <h:outputText value="#{fornecedorController.selected.cnpjcpf}" title="#{bundle.ViewFornecedorTitle_cnpjcpf}"/>
+                        <h:outputText value="#{bundle.ViewFornecedorLabel_razaosocial}"/>
+                        <h:outputText value="#{fornecedorController.selected.razaosocial}" title="#{bundle.ViewFornecedorTitle_razaosocial}"/>
+                        <h:outputText value="#{bundle.ViewFornecedorLabel_fantasia}"/>
+                        <h:outputText value="#{fornecedorController.selected.fantasia}" title="#{bundle.ViewFornecedorTitle_fantasia}"/>
+                        <h:outputText value="#{bundle.ViewFornecedorLabel_logradouro}"/>
+                        <h:outputText value="#{fornecedorController.selected.logradouro}" title="#{bundle.ViewFornecedorTitle_logradouro}"/>
+                        <h:outputText value="#{bundle.ViewFornecedorLabel_numero}"/>
+                        <h:outputText value="#{fornecedorController.selected.numero}" title="#{bundle.ViewFornecedorTitle_numero}"/>
+                        <h:outputText value="#{bundle.ViewFornecedorLabel_bairro}"/>
+                        <h:outputText value="#{fornecedorController.selected.bairro}" title="#{bundle.ViewFornecedorTitle_bairro}"/>
+                        <h:outputText value="#{bundle.ViewFornecedorLabel_cidade}"/>
+                        <h:outputText value="#{fornecedorController.selected.cidade}" title="#{bundle.ViewFornecedorTitle_cidade}"/>
+                        <h:outputText value="#{bundle.ViewFornecedorLabel_estado}"/>
+                        <h:outputText value="#{fornecedorController.selected.estado}" title="#{bundle.ViewFornecedorTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewFornecedorLabel_cep}"/>
+                        <h:outputText value="#{fornecedorController.selected.cep}" title="#{bundle.ViewFornecedorTitle_cep}"/>
+                        <h:outputText value="#{bundle.ViewFornecedorLabel_telefone}"/>
+                        <h:outputText value="#{fornecedorController.selected.telefone}" title="#{bundle.ViewFornecedorTitle_telefone}"/>
+                        <h:outputText value="#{bundle.ViewFornecedorLabel_telefone2}"/>
+                        <h:outputText value="#{fornecedorController.selected.telefone2}" title="#{bundle.ViewFornecedorTitle_telefone2}"/>
+                        <h:outputText value="#{bundle.ViewFornecedorLabel_ie}"/>
+                        <h:outputText value="#{fornecedorController.selected.ie}" title="#{bundle.ViewFornecedorTitle_ie}"/>
+                        <h:outputText value="#{bundle.ViewFornecedorLabel_ativo}"/>
+                        <p:selectBooleanCheckbox value="#{fornecedorController.selected.ativo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewFornecedorLabel_simples}"/>
+                        <p:selectBooleanCheckbox value="#{fornecedorController.selected.simples}" disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FornecedorViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

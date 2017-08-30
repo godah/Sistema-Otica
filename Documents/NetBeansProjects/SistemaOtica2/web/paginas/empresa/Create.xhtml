@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmpresaCreateDlg" widgetVar="EmpresaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEmpresaTitle}">
+            <h:form id="EmpresaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{empresaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_idempresas}" for="idempresas" />
+                        <p:inputText id="idempresas" value="#{empresaController.selected.idempresas}" title="#{bundle.CreateEmpresaTitle_idempresas}" required="true" requiredMessage="#{bundle.CreateEmpresaRequiredMessage_idempresas}"/>
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_cnpjcpf}" for="cnpjcpf" />
+                        <p:inputText id="cnpjcpf" value="#{empresaController.selected.cnpjcpf}" title="#{bundle.CreateEmpresaTitle_cnpjcpf}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_razaosocial}" for="razaosocial" />
+                        <p:inputText id="razaosocial" value="#{empresaController.selected.razaosocial}" title="#{bundle.CreateEmpresaTitle_razaosocial}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_fantasia}" for="fantasia" />
+                        <p:inputText id="fantasia" value="#{empresaController.selected.fantasia}" title="#{bundle.CreateEmpresaTitle_fantasia}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_logradouro}" for="logradouro" />
+                        <p:inputText id="logradouro" value="#{empresaController.selected.logradouro}" title="#{bundle.CreateEmpresaTitle_logradouro}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{empresaController.selected.numero}" title="#{bundle.CreateEmpresaTitle_numero}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_bairro}" for="bairro" />
+                        <p:inputText id="bairro" value="#{empresaController.selected.bairro}" title="#{bundle.CreateEmpresaTitle_bairro}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_cidade}" for="cidade" />
+                        <p:inputText id="cidade" value="#{empresaController.selected.cidade}" title="#{bundle.CreateEmpresaTitle_cidade}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{empresaController.selected.estado}" title="#{bundle.CreateEmpresaTitle_estado}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_cep}" for="cep" />
+                        <p:inputText id="cep" value="#{empresaController.selected.cep}" title="#{bundle.CreateEmpresaTitle_cep}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_telefone}" for="telefone" />
+                        <p:inputText id="telefone" value="#{empresaController.selected.telefone}" title="#{bundle.CreateEmpresaTitle_telefone}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_telefone2}" for="telefone2" />
+                        <p:inputText id="telefone2" value="#{empresaController.selected.telefone2}" title="#{bundle.CreateEmpresaTitle_telefone2}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_ie}" for="ie" />
+                        <p:inputText id="ie" value="#{empresaController.selected.ie}" title="#{bundle.CreateEmpresaTitle_ie}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_ativo}" for="ativo" />
+                        <p:selectBooleanCheckbox id="ativo" value="#{empresaController.selected.ativo}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_simples}" for="simples" />
+                        <p:selectBooleanCheckbox id="simples" value="#{empresaController.selected.simples}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_licenca}" for="licenca" />
+                        <p:selectBooleanCheckbox id="licenca" value="#{empresaController.selected.licenca}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{empresaController.create}" value="#{bundle.Save}" update="display,:EmpresaListForm:datalist,:growl" oncomplete="handleSubmit(args,'EmpresaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EmpresaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MedicoCreateDlg" widgetVar="MedicoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMedicoTitle}">
+            <h:form id="MedicoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{medicoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMedicoLabel_idmedicos}" for="idmedicos" />
+                        <p:inputText id="idmedicos" value="#{medicoController.selected.idmedicos}" title="#{bundle.CreateMedicoTitle_idmedicos}" required="true" requiredMessage="#{bundle.CreateMedicoRequiredMessage_idmedicos}"/>
+                        <p:outputLabel value="#{bundle.CreateMedicoLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{medicoController.selected.nome}" title="#{bundle.CreateMedicoTitle_nome}" />
+                        <p:outputLabel value="#{bundle.CreateMedicoLabel_contato}" for="contato" />
+                        <p:inputText id="contato" value="#{medicoController.selected.contato}" title="#{bundle.CreateMedicoTitle_contato}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{medicoController.create}" value="#{bundle.Save}" update="display,:MedicoListForm:datalist,:growl" oncomplete="handleSubmit(args,'MedicoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MedicoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

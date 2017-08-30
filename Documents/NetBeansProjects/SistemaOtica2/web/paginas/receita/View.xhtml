@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReceitaViewDlg" widgetVar="ReceitaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewReceitaTitle}">
+            <h:form id="ReceitaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{receitaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewReceitaLabel_idreceitas}"/>
+                        <h:outputText value="#{receitaController.selected.idreceitas}" title="#{bundle.ViewReceitaTitle_idreceitas}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_data}"/>
+                        <h:outputText value="#{receitaController.selected.data}" title="#{bundle.ViewReceitaTitle_data}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_dnpod}"/>
+                        <h:outputText value="#{receitaController.selected.dnpod}" title="#{bundle.ViewReceitaTitle_dnpod}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_dnpoe}"/>
+                        <h:outputText value="#{receitaController.selected.dnpoe}" title="#{bundle.ViewReceitaTitle_dnpoe}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_aco}"/>
+                        <h:outputText value="#{receitaController.selected.aco}" title="#{bundle.ViewReceitaTitle_aco}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_dpa}"/>
+                        <h:outputText value="#{receitaController.selected.dpa}" title="#{bundle.ViewReceitaTitle_dpa}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_dm}"/>
+                        <h:outputText value="#{receitaController.selected.dm}" title="#{bundle.ViewReceitaTitle_dm}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_vert}"/>
+                        <h:outputText value="#{receitaController.selected.vert}" title="#{bundle.ViewReceitaTitle_vert}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_ad}"/>
+                        <h:outputText value="#{receitaController.selected.ad}" title="#{bundle.ViewReceitaTitle_ad}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_lodesf}"/>
+                        <h:outputText value="#{receitaController.selected.lodesf}" title="#{bundle.ViewReceitaTitle_lodesf}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_lodcil}"/>
+                        <h:outputText value="#{receitaController.selected.lodcil}" title="#{bundle.ViewReceitaTitle_lodcil}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_lodeixo}"/>
+                        <h:outputText value="#{receitaController.selected.lodeixo}" title="#{bundle.ViewReceitaTitle_lodeixo}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_loeesf}"/>
+                        <h:outputText value="#{receitaController.selected.loeesf}" title="#{bundle.ViewReceitaTitle_loeesf}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_loecil}"/>
+                        <h:outputText value="#{receitaController.selected.loecil}" title="#{bundle.ViewReceitaTitle_loecil}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_loeeixo}"/>
+                        <h:outputText value="#{receitaController.selected.loeeixo}" title="#{bundle.ViewReceitaTitle_loeeixo}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_podesf}"/>
+                        <h:outputText value="#{receitaController.selected.podesf}" title="#{bundle.ViewReceitaTitle_podesf}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_podcil}"/>
+                        <h:outputText value="#{receitaController.selected.podcil}" title="#{bundle.ViewReceitaTitle_podcil}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_podeixo}"/>
+                        <h:outputText value="#{receitaController.selected.podeixo}" title="#{bundle.ViewReceitaTitle_podeixo}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_poeesf}"/>
+                        <h:outputText value="#{receitaController.selected.poeesf}" title="#{bundle.ViewReceitaTitle_poeesf}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_poecil}"/>
+                        <h:outputText value="#{receitaController.selected.poecil}" title="#{bundle.ViewReceitaTitle_poecil}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_poeeixo}"/>
+                        <h:outputText value="#{receitaController.selected.poeeixo}" title="#{bundle.ViewReceitaTitle_poeeixo}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_observacao}"/>
+                        <h:outputText value="#{receitaController.selected.observacao}" title="#{bundle.ViewReceitaTitle_observacao}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_obsreceita}"/>
+                        <h:outputText value="#{receitaController.selected.obsreceita}" title="#{bundle.ViewReceitaTitle_obsreceita}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_clienteIdclientes}"/>
+                        <h:outputText value="#{receitaController.selected.clienteIdclientes}" title="#{bundle.ViewReceitaTitle_clienteIdclientes}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_medicoIdmedicos}"/>
+                        <h:outputText value="#{receitaController.selected.medicoIdmedicos}" title="#{bundle.ViewReceitaTitle_medicoIdmedicos}"/>
+                        <h:outputText value="#{bundle.ViewReceitaLabel_usuarioIdusuarios}"/>
+                        <h:outputText value="#{receitaController.selected.usuarioIdusuarios}" title="#{bundle.ViewReceitaTitle_usuarioIdusuarios}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ReceitaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

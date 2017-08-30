@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmpresaViewDlg" widgetVar="EmpresaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEmpresaTitle}">
+            <h:form id="EmpresaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{empresaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_idempresas}"/>
+                        <h:outputText value="#{empresaController.selected.idempresas}" title="#{bundle.ViewEmpresaTitle_idempresas}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_cnpjcpf}"/>
+                        <h:outputText value="#{empresaController.selected.cnpjcpf}" title="#{bundle.ViewEmpresaTitle_cnpjcpf}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_razaosocial}"/>
+                        <h:outputText value="#{empresaController.selected.razaosocial}" title="#{bundle.ViewEmpresaTitle_razaosocial}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_fantasia}"/>
+                        <h:outputText value="#{empresaController.selected.fantasia}" title="#{bundle.ViewEmpresaTitle_fantasia}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_logradouro}"/>
+                        <h:outputText value="#{empresaController.selected.logradouro}" title="#{bundle.ViewEmpresaTitle_logradouro}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_numero}"/>
+                        <h:outputText value="#{empresaController.selected.numero}" title="#{bundle.ViewEmpresaTitle_numero}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_bairro}"/>
+                        <h:outputText value="#{empresaController.selected.bairro}" title="#{bundle.ViewEmpresaTitle_bairro}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_cidade}"/>
+                        <h:outputText value="#{empresaController.selected.cidade}" title="#{bundle.ViewEmpresaTitle_cidade}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_estado}"/>
+                        <h:outputText value="#{empresaController.selected.estado}" title="#{bundle.ViewEmpresaTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_cep}"/>
+                        <h:outputText value="#{empresaController.selected.cep}" title="#{bundle.ViewEmpresaTitle_cep}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_telefone}"/>
+                        <h:outputText value="#{empresaController.selected.telefone}" title="#{bundle.ViewEmpresaTitle_telefone}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_telefone2}"/>
+                        <h:outputText value="#{empresaController.selected.telefone2}" title="#{bundle.ViewEmpresaTitle_telefone2}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_ie}"/>
+                        <h:outputText value="#{empresaController.selected.ie}" title="#{bundle.ViewEmpresaTitle_ie}"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_ativo}"/>
+                        <p:selectBooleanCheckbox value="#{empresaController.selected.ativo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_simples}"/>
+                        <p:selectBooleanCheckbox value="#{empresaController.selected.simples}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEmpresaLabel_licenca}"/>
+                        <p:selectBooleanCheckbox value="#{empresaController.selected.licenca}" disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EmpresaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

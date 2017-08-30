@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProdutoViewDlg" widgetVar="ProdutoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewProdutoTitle}">
+            <h:form id="ProdutoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{produtoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewProdutoLabel_idprodutos}"/>
+                        <h:outputText value="#{produtoController.selected.idprodutos}" title="#{bundle.ViewProdutoTitle_idprodutos}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_descricao}"/>
+                        <h:outputText value="#{produtoController.selected.descricao}" title="#{bundle.ViewProdutoTitle_descricao}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_codigo}"/>
+                        <h:outputText value="#{produtoController.selected.codigo}" title="#{bundle.ViewProdutoTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_unidade}"/>
+                        <h:outputText value="#{produtoController.selected.unidade}" title="#{bundle.ViewProdutoTitle_unidade}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_saldo}"/>
+                        <h:outputText value="#{produtoController.selected.saldo}" title="#{bundle.ViewProdutoTitle_saldo}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_estoquemin}"/>
+                        <h:outputText value="#{produtoController.selected.estoquemin}" title="#{bundle.ViewProdutoTitle_estoquemin}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_preco}"/>
+                        <h:outputText value="#{produtoController.selected.preco}" title="#{bundle.ViewProdutoTitle_preco}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_corIdcor}"/>
+                        <h:outputText value="#{produtoController.selected.corIdcor}" title="#{bundle.ViewProdutoTitle_corIdcor}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_empresaIdempresas}"/>
+                        <h:outputText value="#{produtoController.selected.empresaIdempresas}" title="#{bundle.ViewProdutoTitle_empresaIdempresas}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_fornecedorIdfornecedores}"/>
+                        <h:outputText value="#{produtoController.selected.fornecedorIdfornecedores}" title="#{bundle.ViewProdutoTitle_fornecedorIdfornecedores}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_marcaIdmarca}"/>
+                        <h:outputText value="#{produtoController.selected.marcaIdmarca}" title="#{bundle.ViewProdutoTitle_marcaIdmarca}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_tamanhoIdtamanho}"/>
+                        <h:outputText value="#{produtoController.selected.tamanhoIdtamanho}" title="#{bundle.ViewProdutoTitle_tamanhoIdtamanho}"/>
+                        <h:outputText value="#{bundle.ViewProdutoLabel_tipoIdtipo}"/>
+                        <h:outputText value="#{produtoController.selected.tipoIdtipo}" title="#{bundle.ViewProdutoTitle_tipoIdtipo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProdutoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

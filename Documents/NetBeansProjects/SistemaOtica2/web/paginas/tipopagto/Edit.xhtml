@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipopagtoEditDlg" widgetVar="TipopagtoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTipopagtoTitle}">
+            <h:form id="TipopagtoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipopagtoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTipopagtoLabel_idtipopagto}" for="idtipopagto" />
+                        <p:inputText id="idtipopagto" value="#{tipopagtoController.selected.idtipopagto}" title="#{bundle.EditTipopagtoTitle_idtipopagto}" required="true" requiredMessage="#{bundle.EditTipopagtoRequiredMessage_idtipopagto}"/>
+                        <p:outputLabel value="#{bundle.EditTipopagtoLabel_tipopagto}" for="tipopagto" />
+                        <p:inputText id="tipopagto" value="#{tipopagtoController.selected.tipopagto}" title="#{bundle.EditTipopagtoTitle_tipopagto}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipopagtoController.update}" value="#{bundle.Save}" update="display,:TipopagtoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TipopagtoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TipopagtoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

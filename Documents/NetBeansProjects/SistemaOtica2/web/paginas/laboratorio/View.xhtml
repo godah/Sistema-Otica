@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LaboratorioViewDlg" widgetVar="LaboratorioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewLaboratorioTitle}">
+            <h:form id="LaboratorioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{laboratorioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewLaboratorioLabel_idlaboratorios}"/>
+                        <h:outputText value="#{laboratorioController.selected.idlaboratorios}" title="#{bundle.ViewLaboratorioTitle_idlaboratorios}"/>
+                        <h:outputText value="#{bundle.ViewLaboratorioLabel_razaosocial}"/>
+                        <h:outputText value="#{laboratorioController.selected.razaosocial}" title="#{bundle.ViewLaboratorioTitle_razaosocial}"/>
+                        <h:outputText value="#{bundle.ViewLaboratorioLabel_fantasia}"/>
+                        <h:outputText value="#{laboratorioController.selected.fantasia}" title="#{bundle.ViewLaboratorioTitle_fantasia}"/>
+                        <h:outputText value="#{bundle.ViewLaboratorioLabel_cnpjcpf}"/>
+                        <h:outputText value="#{laboratorioController.selected.cnpjcpf}" title="#{bundle.ViewLaboratorioTitle_cnpjcpf}"/>
+                        <h:outputText value="#{bundle.ViewLaboratorioLabel_logradouro}"/>
+                        <h:outputText value="#{laboratorioController.selected.logradouro}" title="#{bundle.ViewLaboratorioTitle_logradouro}"/>
+                        <h:outputText value="#{bundle.ViewLaboratorioLabel_numero}"/>
+                        <h:outputText value="#{laboratorioController.selected.numero}" title="#{bundle.ViewLaboratorioTitle_numero}"/>
+                        <h:outputText value="#{bundle.ViewLaboratorioLabel_bairro}"/>
+                        <h:outputText value="#{laboratorioController.selected.bairro}" title="#{bundle.ViewLaboratorioTitle_bairro}"/>
+                        <h:outputText value="#{bundle.ViewLaboratorioLabel_cidade}"/>
+                        <h:outputText value="#{laboratorioController.selected.cidade}" title="#{bundle.ViewLaboratorioTitle_cidade}"/>
+                        <h:outputText value="#{bundle.ViewLaboratorioLabel_estado}"/>
+                        <h:outputText value="#{laboratorioController.selected.estado}" title="#{bundle.ViewLaboratorioTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewLaboratorioLabel_cep}"/>
+                        <h:outputText value="#{laboratorioController.selected.cep}" title="#{bundle.ViewLaboratorioTitle_cep}"/>
+                        <h:outputText value="#{bundle.ViewLaboratorioLabel_telefone}"/>
+                        <h:outputText value="#{laboratorioController.selected.telefone}" title="#{bundle.ViewLaboratorioTitle_telefone}"/>
+                        <h:outputText value="#{bundle.ViewLaboratorioLabel_telefone2}"/>
+                        <h:outputText value="#{laboratorioController.selected.telefone2}" title="#{bundle.ViewLaboratorioTitle_telefone2}"/>
+                        <h:outputText value="#{bundle.ViewLaboratorioLabel_ie}"/>
+                        <h:outputText value="#{laboratorioController.selected.ie}" title="#{bundle.ViewLaboratorioTitle_ie}"/>
+                        <h:outputText value="#{bundle.ViewLaboratorioLabel_ativo}"/>
+                        <p:selectBooleanCheckbox value="#{laboratorioController.selected.ativo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewLaboratorioLabel_contato}"/>
+                        <h:outputText value="#{laboratorioController.selected.contato}" title="#{bundle.ViewLaboratorioTitle_contato}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="LaboratorioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

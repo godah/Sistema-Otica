@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PedidoCreateDlg" widgetVar="PedidoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePedidoTitle}">
+            <h:form id="PedidoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pedidoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePedidoLabel_idpedidos}" for="idpedidos" />
+                        <p:inputText id="idpedidos" value="#{pedidoController.selected.idpedidos}" title="#{bundle.CreatePedidoTitle_idpedidos}" required="true" requiredMessage="#{bundle.CreatePedidoRequiredMessage_idpedidos}"/>
+                        <p:outputLabel value="#{bundle.CreatePedidoLabel_data}" for="data" />
+                        <p:calendar id="data" pattern="MM/dd/yyyy" value="#{pedidoController.selected.data}" title="#{bundle.EditPedidoTitle_data}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreatePedidoLabel_datahora}" for="datahora" />
+                        <p:calendar id="datahora" pattern="MM/dd/yyyy HH:mm:ss" value="#{pedidoController.selected.datahora}" title="#{bundle.EditPedidoTitle_datahora}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreatePedidoLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{pedidoController.selected.codigo}" title="#{bundle.CreatePedidoTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.CreatePedidoLabel_sinal}" for="sinal" />
+                        <p:inputText id="sinal" value="#{pedidoController.selected.sinal}" title="#{bundle.CreatePedidoTitle_sinal}" />
+                        <p:outputLabel value="#{bundle.CreatePedidoLabel_desconto}" for="desconto" />
+                        <p:inputText id="desconto" value="#{pedidoController.selected.desconto}" title="#{bundle.CreatePedidoTitle_desconto}" />
+                        <p:outputLabel value="#{bundle.CreatePedidoLabel_previsaoentrega}" for="previsaoentrega" />
+                        <p:inputText id="previsaoentrega" value="#{pedidoController.selected.previsaoentrega}" title="#{bundle.CreatePedidoTitle_previsaoentrega}" />
+                        <p:outputLabel value="#{bundle.CreatePedidoLabel_entregue}" for="entregue" />
+                        <p:selectBooleanCheckbox id="entregue" value="#{pedidoController.selected.entregue}" />
+                        <p:outputLabel value="#{bundle.CreatePedidoLabel_comrx}" for="comrx" />
+                        <p:selectBooleanCheckbox id="comrx" value="#{pedidoController.selected.comrx}" />
+                        <p:outputLabel value="#{bundle.CreatePedidoLabel_observacaoped}" for="observacaoped" />
+                        <p:inputText id="observacaoped" value="#{pedidoController.selected.observacaoped}" title="#{bundle.CreatePedidoTitle_observacaoped}" />
+                        <p:outputLabel value="#{bundle.CreatePedidoLabel_clienteIdclientes}" for="clienteIdclientes" />
+                        <p:selectOneMenu id="clienteIdclientes" value="#{pedidoController.selected.clienteIdclientes}" required="true" requiredMessage="#{bundle.EditPedidoRequiredMessage_clienteIdclientes}">
+                            <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"
+                                           var="clienteIdclientesItem"
+                                           itemValue="#{clienteIdclientesItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePedidoLabel_laboratorioIdlaboratorios}" for="laboratorioIdlaboratorios" />
+                        <p:selectOneMenu id="laboratorioIdlaboratorios" value="#{pedidoController.selected.laboratorioIdlaboratorios}" required="true" requiredMessage="#{bundle.EditPedidoRequiredMessage_laboratorioIdlaboratorios}">
+                            <f:selectItems value="#{laboratorioController.itemsAvailableSelectOne}"
+                                           var="laboratorioIdlaboratoriosItem"
+                                           itemValue="#{laboratorioIdlaboratoriosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePedidoLabel_receitaIdreceitas}" for="receitaIdreceitas" />
+                        <p:selectOneMenu id="receitaIdreceitas" value="#{pedidoController.selected.receitaIdreceitas}" required="true" requiredMessage="#{bundle.EditPedidoRequiredMessage_receitaIdreceitas}">
+                            <f:selectItems value="#{receitaController.itemsAvailableSelectOne}"
+                                           var="receitaIdreceitasItem"
+                                           itemValue="#{receitaIdreceitasItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePedidoLabel_tipopagtoIdtipopagto}" for="tipopagtoIdtipopagto" />
+                        <p:selectOneMenu id="tipopagtoIdtipopagto" value="#{pedidoController.selected.tipopagtoIdtipopagto}" required="true" requiredMessage="#{bundle.EditPedidoRequiredMessage_tipopagtoIdtipopagto}">
+                            <f:selectItems value="#{tipopagtoController.itemsAvailableSelectOne}"
+                                           var="tipopagtoIdtipopagtoItem"
+                                           itemValue="#{tipopagtoIdtipopagtoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePedidoLabel_usuarioIdusuarios}" for="usuarioIdusuarios" />
+                        <p:selectOneMenu id="usuarioIdusuarios" value="#{pedidoController.selected.usuarioIdusuarios}" required="true" requiredMessage="#{bundle.EditPedidoRequiredMessage_usuarioIdusuarios}">
+                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
+                                           var="usuarioIdusuariosItem"
+                                           itemValue="#{usuarioIdusuariosItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pedidoController.create}" value="#{bundle.Save}" update="display,:PedidoListForm:datalist,:growl" oncomplete="handleSubmit(args,'PedidoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PedidoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

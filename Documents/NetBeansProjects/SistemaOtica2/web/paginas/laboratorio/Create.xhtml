@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LaboratorioCreateDlg" widgetVar="LaboratorioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateLaboratorioTitle}">
+            <h:form id="LaboratorioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{laboratorioController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateLaboratorioLabel_idlaboratorios}" for="idlaboratorios" />
+                        <p:inputText id="idlaboratorios" value="#{laboratorioController.selected.idlaboratorios}" title="#{bundle.CreateLaboratorioTitle_idlaboratorios}" required="true" requiredMessage="#{bundle.CreateLaboratorioRequiredMessage_idlaboratorios}"/>
+                        <p:outputLabel value="#{bundle.CreateLaboratorioLabel_razaosocial}" for="razaosocial" />
+                        <p:inputText id="razaosocial" value="#{laboratorioController.selected.razaosocial}" title="#{bundle.CreateLaboratorioTitle_razaosocial}" />
+                        <p:outputLabel value="#{bundle.CreateLaboratorioLabel_fantasia}" for="fantasia" />
+                        <p:inputText id="fantasia" value="#{laboratorioController.selected.fantasia}" title="#{bundle.CreateLaboratorioTitle_fantasia}" />
+                        <p:outputLabel value="#{bundle.CreateLaboratorioLabel_cnpjcpf}" for="cnpjcpf" />
+                        <p:inputText id="cnpjcpf" value="#{laboratorioController.selected.cnpjcpf}" title="#{bundle.CreateLaboratorioTitle_cnpjcpf}" />
+                        <p:outputLabel value="#{bundle.CreateLaboratorioLabel_logradouro}" for="logradouro" />
+                        <p:inputText id="logradouro" value="#{laboratorioController.selected.logradouro}" title="#{bundle.CreateLaboratorioTitle_logradouro}" />
+                        <p:outputLabel value="#{bundle.CreateLaboratorioLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{laboratorioController.selected.numero}" title="#{bundle.CreateLaboratorioTitle_numero}" />
+                        <p:outputLabel value="#{bundle.CreateLaboratorioLabel_bairro}" for="bairro" />
+                        <p:inputText id="bairro" value="#{laboratorioController.selected.bairro}" title="#{bundle.CreateLaboratorioTitle_bairro}" />
+                        <p:outputLabel value="#{bundle.CreateLaboratorioLabel_cidade}" for="cidade" />
+                        <p:inputText id="cidade" value="#{laboratorioController.selected.cidade}" title="#{bundle.CreateLaboratorioTitle_cidade}" />
+                        <p:outputLabel value="#{bundle.CreateLaboratorioLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{laboratorioController.selected.estado}" title="#{bundle.CreateLaboratorioTitle_estado}" />
+                        <p:outputLabel value="#{bundle.CreateLaboratorioLabel_cep}" for="cep" />
+                        <p:inputText id="cep" value="#{laboratorioController.selected.cep}" title="#{bundle.CreateLaboratorioTitle_cep}" />
+                        <p:outputLabel value="#{bundle.CreateLaboratorioLabel_telefone}" for="telefone" />
+                        <p:inputText id="telefone" value="#{laboratorioController.selected.telefone}" title="#{bundle.CreateLaboratorioTitle_telefone}" />
+                        <p:outputLabel value="#{bundle.CreateLaboratorioLabel_telefone2}" for="telefone2" />
+                        <p:inputText id="telefone2" value="#{laboratorioController.selected.telefone2}" title="#{bundle.CreateLaboratorioTitle_telefone2}" />
+                        <p:outputLabel value="#{bundle.CreateLaboratorioLabel_ie}" for="ie" />
+                        <p:inputText id="ie" value="#{laboratorioController.selected.ie}" title="#{bundle.CreateLaboratorioTitle_ie}" />
+                        <p:outputLabel value="#{bundle.CreateLaboratorioLabel_ativo}" for="ativo" />
+                        <p:selectBooleanCheckbox id="ativo" value="#{laboratorioController.selected.ativo}" />
+                        <p:outputLabel value="#{bundle.CreateLaboratorioLabel_contato}" for="contato" />
+                        <p:inputText id="contato" value="#{laboratorioController.selected.contato}" title="#{bundle.CreateLaboratorioTitle_contato}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{laboratorioController.create}" value="#{bundle.Save}" update="display,:LaboratorioListForm:datalist,:growl" oncomplete="handleSubmit(args,'LaboratorioCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LaboratorioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TamanhoEditDlg" widgetVar="TamanhoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTamanhoTitle}">
+            <h:form id="TamanhoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tamanhoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTamanhoLabel_idtamanho}" for="idtamanho" />
+                        <p:inputText id="idtamanho" value="#{tamanhoController.selected.idtamanho}" title="#{bundle.EditTamanhoTitle_idtamanho}" required="true" requiredMessage="#{bundle.EditTamanhoRequiredMessage_idtamanho}"/>
+                        <p:outputLabel value="#{bundle.EditTamanhoLabel_tamanho}" for="tamanho" />
+                        <p:inputText id="tamanho" value="#{tamanhoController.selected.tamanho}" title="#{bundle.EditTamanhoTitle_tamanho}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tamanhoController.update}" value="#{bundle.Save}" update="display,:TamanhoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TamanhoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TamanhoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

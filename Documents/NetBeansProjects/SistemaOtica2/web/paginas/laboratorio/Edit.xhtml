@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LaboratorioEditDlg" widgetVar="LaboratorioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditLaboratorioTitle}">
+            <h:form id="LaboratorioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{laboratorioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditLaboratorioLabel_idlaboratorios}" for="idlaboratorios" />
+                        <p:inputText id="idlaboratorios" value="#{laboratorioController.selected.idlaboratorios}" title="#{bundle.EditLaboratorioTitle_idlaboratorios}" required="true" requiredMessage="#{bundle.EditLaboratorioRequiredMessage_idlaboratorios}"/>
+                        <p:outputLabel value="#{bundle.EditLaboratorioLabel_razaosocial}" for="razaosocial" />
+                        <p:inputText id="razaosocial" value="#{laboratorioController.selected.razaosocial}" title="#{bundle.EditLaboratorioTitle_razaosocial}" />
+                        <p:outputLabel value="#{bundle.EditLaboratorioLabel_fantasia}" for="fantasia" />
+                        <p:inputText id="fantasia" value="#{laboratorioController.selected.fantasia}" title="#{bundle.EditLaboratorioTitle_fantasia}" />
+                        <p:outputLabel value="#{bundle.EditLaboratorioLabel_cnpjcpf}" for="cnpjcpf" />
+                        <p:inputText id="cnpjcpf" value="#{laboratorioController.selected.cnpjcpf}" title="#{bundle.EditLaboratorioTitle_cnpjcpf}" />
+                        <p:outputLabel value="#{bundle.EditLaboratorioLabel_logradouro}" for="logradouro" />
+                        <p:inputText id="logradouro" value="#{laboratorioController.selected.logradouro}" title="#{bundle.EditLaboratorioTitle_logradouro}" />
+                        <p:outputLabel value="#{bundle.EditLaboratorioLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{laboratorioController.selected.numero}" title="#{bundle.EditLaboratorioTitle_numero}" />
+                        <p:outputLabel value="#{bundle.EditLaboratorioLabel_bairro}" for="bairro" />
+                        <p:inputText id="bairro" value="#{laboratorioController.selected.bairro}" title="#{bundle.EditLaboratorioTitle_bairro}" />
+                        <p:outputLabel value="#{bundle.EditLaboratorioLabel_cidade}" for="cidade" />
+                        <p:inputText id="cidade" value="#{laboratorioController.selected.cidade}" title="#{bundle.EditLaboratorioTitle_cidade}" />
+                        <p:outputLabel value="#{bundle.EditLaboratorioLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{laboratorioController.selected.estado}" title="#{bundle.EditLaboratorioTitle_estado}" />
+                        <p:outputLabel value="#{bundle.EditLaboratorioLabel_cep}" for="cep" />
+                        <p:inputText id="cep" value="#{laboratorioController.selected.cep}" title="#{bundle.EditLaboratorioTitle_cep}" />
+                        <p:outputLabel value="#{bundle.EditLaboratorioLabel_telefone}" for="telefone" />
+                        <p:inputText id="telefone" value="#{laboratorioController.selected.telefone}" title="#{bundle.EditLaboratorioTitle_telefone}" />
+                        <p:outputLabel value="#{bundle.EditLaboratorioLabel_telefone2}" for="telefone2" />
+                        <p:inputText id="telefone2" value="#{laboratorioController.selected.telefone2}" title="#{bundle.EditLaboratorioTitle_telefone2}" />
+                        <p:outputLabel value="#{bundle.EditLaboratorioLabel_ie}" for="ie" />
+                        <p:inputText id="ie" value="#{laboratorioController.selected.ie}" title="#{bundle.EditLaboratorioTitle_ie}" />
+                        <p:outputLabel value="#{bundle.EditLaboratorioLabel_ativo}" for="ativo" />
+                        <p:selectBooleanCheckbox id="ativo" value="#{laboratorioController.selected.ativo}" />
+                        <p:outputLabel value="#{bundle.EditLaboratorioLabel_contato}" for="contato" />
+                        <p:inputText id="contato" value="#{laboratorioController.selected.contato}" title="#{bundle.EditLaboratorioTitle_contato}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{laboratorioController.update}" value="#{bundle.Save}" update="display,:LaboratorioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'LaboratorioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LaboratorioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

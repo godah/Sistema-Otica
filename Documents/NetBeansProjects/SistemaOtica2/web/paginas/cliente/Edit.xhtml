@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ClienteEditDlg" widgetVar="ClienteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditClienteTitle}">
+            <h:form id="ClienteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{clienteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditClienteLabel_idclientes}" for="idclientes" />
+                        <p:inputText id="idclientes" value="#{clienteController.selected.idclientes}" title="#{bundle.EditClienteTitle_idclientes}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_idclientes}"/>
+                        <p:outputLabel value="#{bundle.EditClienteLabel_razao}" for="razao" />
+                        <p:inputText id="razao" value="#{clienteController.selected.razao}" title="#{bundle.EditClienteTitle_razao}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_fantasia}" for="fantasia" />
+                        <p:inputText id="fantasia" value="#{clienteController.selected.fantasia}" title="#{bundle.EditClienteTitle_fantasia}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_cnpjcpf}" for="cnpjcpf" />
+                        <p:inputText id="cnpjcpf" value="#{clienteController.selected.cnpjcpf}" title="#{bundle.EditClienteTitle_cnpjcpf}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_logradouro}" for="logradouro" />
+                        <p:inputText id="logradouro" value="#{clienteController.selected.logradouro}" title="#{bundle.EditClienteTitle_logradouro}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{clienteController.selected.numero}" title="#{bundle.EditClienteTitle_numero}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_bairro}" for="bairro" />
+                        <p:inputText id="bairro" value="#{clienteController.selected.bairro}" title="#{bundle.EditClienteTitle_bairro}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_cidade}" for="cidade" />
+                        <p:inputText id="cidade" value="#{clienteController.selected.cidade}" title="#{bundle.EditClienteTitle_cidade}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{clienteController.selected.estado}" title="#{bundle.EditClienteTitle_estado}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_cep}" for="cep" />
+                        <p:inputText id="cep" value="#{clienteController.selected.cep}" title="#{bundle.EditClienteTitle_cep}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_telefone}" for="telefone" />
+                        <p:inputText id="telefone" value="#{clienteController.selected.telefone}" title="#{bundle.EditClienteTitle_telefone}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_telefone2}" for="telefone2" />
+                        <p:inputText id="telefone2" value="#{clienteController.selected.telefone2}" title="#{bundle.EditClienteTitle_telefone2}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_ie}" for="ie" />
+                        <p:inputText id="ie" value="#{clienteController.selected.ie}" title="#{bundle.EditClienteTitle_ie}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_ativo}" for="ativo" />
+                        <p:selectBooleanCheckbox id="ativo" value="#{clienteController.selected.ativo}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_simples}" for="simples" />
+                        <p:selectBooleanCheckbox id="simples" value="#{clienteController.selected.simples}" />
+                        <p:outputLabel value="#{bundle.EditClienteLabel_nascimento}" for="nascimento" />
+                        <p:calendar id="nascimento" pattern="MM/dd/yyyy" value="#{clienteController.selected.nascimento}" title="#{bundle.EditClienteTitle_nascimento}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditClienteLabel_responsavel}" for="responsavel" />
+                        <p:inputText id="responsavel" value="#{clienteController.selected.responsavel}" title="#{bundle.EditClienteTitle_responsavel}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{clienteController.update}" value="#{bundle.Save}" update="display,:ClienteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ClienteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ClienteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPedidoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="PedidoListForm">
+                <p:panel header="#{bundle.ListPedidoTitle}">
+                    <p:dataTable id="datalist" value="#{pedidoController.items}" var="item"
+                                 selectionMode="single" selection="#{pedidoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idpedidos}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPedidoTitle_idpedidos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idpedidos}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPedidoTitle_data}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.data}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPedidoTitle_datahora}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.datahora}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPedidoTitle_codigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPedidoTitle_sinal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sinal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPedidoTitle_desconto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.desconto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPedidoTitle_previsaoentrega}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.previsaoentrega}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPedidoTitle_entregue}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.entregue}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPedidoTitle_comrx}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.comrx}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPedidoTitle_observacaoped}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacaoped}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPedidoTitle_clienteIdclientes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clienteIdclientes}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPedidoTitle_laboratorioIdlaboratorios}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.laboratorioIdlaboratorios}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPedidoTitle_receitaIdreceitas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.receitaIdreceitas}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPedidoTitle_tipopagtoIdtipopagto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipopagtoIdtipopagto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPedidoTitle_usuarioIdusuarios}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuarioIdusuarios}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pedidoController.prepareCreate}" update=":PedidoCreateForm" oncomplete="PF('PedidoCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":PedidoViewForm" oncomplete="PF('PedidoViewDialog').show()" disabled="#{empty pedidoController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":PedidoEditForm" oncomplete="PF('PedidoEditDialog').show()" disabled="#{empty pedidoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{pedidoController.destroy}" update=":growl,datalist" disabled="#{empty pedidoController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

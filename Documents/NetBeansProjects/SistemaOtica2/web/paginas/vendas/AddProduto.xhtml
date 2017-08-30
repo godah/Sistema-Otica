@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ItenspedidosCreateDlg" widgetVar="ItenspedidosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateItenspedidosTitle}">
+            <h:form id="ItenspedidosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{itenspedidosController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.CreateItenspedidosLabel_produtos}" for="produtos" />
+                        
+                        <p:selectOneMenu id="produtos" 
+                                         value="#{itenspedidosController.selected.produtos}"
+                                         filter="true"
+                                         filterMatchMode="contains"
+                                         requiredMessage="#{bundle.EditItenspedidosRequiredMessage_produtos}">
+                            <f:selectItems value="#{produtosController.itemsAvailableSelectOne}"
+                                           var="produtosItem"
+                                           itemValue="#{produtosItem}"
+                                           itemLabel="#{produtosItem.descricao}"/>
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="#{bundle.CreateItenspedidosLabel_quantidade}" for="quantidade" />
+                        <p:inputText id="quantidade" 
+                                     value="#{itenspedidosController.selected.quantidade}"
+                                     title="#{bundle.CreateItenspedidosTitle_quantidade}" />
+                        
+                        
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{itenspedidosController.addProduto()}" 
+                                     value="Adicionar" 
+                                     update="display,:vendaForm:ItenspedidosListForm:datalist,:growl" 
+                                     oncomplete="handleSubmit(args,'ItenspedidosCreateDialog');"/>
+                    
+                    <p:commandButton value="#{bundle.Cancel}" 
+                                     onclick="ItenspedidosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

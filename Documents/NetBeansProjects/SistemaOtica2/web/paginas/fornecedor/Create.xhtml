@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FornecedorCreateDlg" widgetVar="FornecedorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateFornecedorTitle}">
+            <h:form id="FornecedorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fornecedorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_idfornecedores}" for="idfornecedores" />
+                        <p:inputText id="idfornecedores" value="#{fornecedorController.selected.idfornecedores}" title="#{bundle.CreateFornecedorTitle_idfornecedores}" required="true" requiredMessage="#{bundle.CreateFornecedorRequiredMessage_idfornecedores}"/>
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_cnpjcpf}" for="cnpjcpf" />
+                        <p:inputText id="cnpjcpf" value="#{fornecedorController.selected.cnpjcpf}" title="#{bundle.CreateFornecedorTitle_cnpjcpf}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_razaosocial}" for="razaosocial" />
+                        <p:inputText id="razaosocial" value="#{fornecedorController.selected.razaosocial}" title="#{bundle.CreateFornecedorTitle_razaosocial}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_fantasia}" for="fantasia" />
+                        <p:inputText id="fantasia" value="#{fornecedorController.selected.fantasia}" title="#{bundle.CreateFornecedorTitle_fantasia}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_logradouro}" for="logradouro" />
+                        <p:inputText id="logradouro" value="#{fornecedorController.selected.logradouro}" title="#{bundle.CreateFornecedorTitle_logradouro}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{fornecedorController.selected.numero}" title="#{bundle.CreateFornecedorTitle_numero}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_bairro}" for="bairro" />
+                        <p:inputText id="bairro" value="#{fornecedorController.selected.bairro}" title="#{bundle.CreateFornecedorTitle_bairro}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_cidade}" for="cidade" />
+                        <p:inputText id="cidade" value="#{fornecedorController.selected.cidade}" title="#{bundle.CreateFornecedorTitle_cidade}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{fornecedorController.selected.estado}" title="#{bundle.CreateFornecedorTitle_estado}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_cep}" for="cep" />
+                        <p:inputText id="cep" value="#{fornecedorController.selected.cep}" title="#{bundle.CreateFornecedorTitle_cep}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_telefone}" for="telefone" />
+                        <p:inputText id="telefone" value="#{fornecedorController.selected.telefone}" title="#{bundle.CreateFornecedorTitle_telefone}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_telefone2}" for="telefone2" />
+                        <p:inputText id="telefone2" value="#{fornecedorController.selected.telefone2}" title="#{bundle.CreateFornecedorTitle_telefone2}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_ie}" for="ie" />
+                        <p:inputText id="ie" value="#{fornecedorController.selected.ie}" title="#{bundle.CreateFornecedorTitle_ie}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_ativo}" for="ativo" />
+                        <p:selectBooleanCheckbox id="ativo" value="#{fornecedorController.selected.ativo}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_simples}" for="simples" />
+                        <p:selectBooleanCheckbox id="simples" value="#{fornecedorController.selected.simples}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{fornecedorController.create}" value="#{bundle.Save}" update="display,:FornecedorListForm:datalist,:growl" oncomplete="handleSubmit(args,'FornecedorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FornecedorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ItenspedidoViewDlg" widgetVar="ItenspedidoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewItenspedidoTitle}">
+            <h:form id="ItenspedidoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{itenspedidoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewItenspedidoLabel_iditenspedidos}"/>
+                        <h:outputText value="#{itenspedidoController.selected.iditenspedidos}" title="#{bundle.ViewItenspedidoTitle_iditenspedidos}"/>
+                        <h:outputText value="#{bundle.ViewItenspedidoLabel_quantidade}"/>
+                        <h:outputText value="#{itenspedidoController.selected.quantidade}" title="#{bundle.ViewItenspedidoTitle_quantidade}"/>
+                        <h:outputText value="#{bundle.ViewItenspedidoLabel_pedidoIdpedidos}"/>
+                        <h:outputText value="#{itenspedidoController.selected.pedidoIdpedidos}" title="#{bundle.ViewItenspedidoTitle_pedidoIdpedidos}"/>
+                        <h:outputText value="#{bundle.ViewItenspedidoLabel_produtoIdprodutos}"/>
+                        <h:outputText value="#{itenspedidoController.selected.produtoIdprodutos}" title="#{bundle.ViewItenspedidoTitle_produtoIdprodutos}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ItenspedidoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

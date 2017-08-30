@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ItenspedidoCreateDlg" widgetVar="ItenspedidoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateItenspedidoTitle}">
+            <h:form id="ItenspedidoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{itenspedidoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateItenspedidoLabel_iditenspedidos}" for="iditenspedidos" />
+                        <p:inputText id="iditenspedidos" value="#{itenspedidoController.selected.iditenspedidos}" title="#{bundle.CreateItenspedidoTitle_iditenspedidos}" required="true" requiredMessage="#{bundle.CreateItenspedidoRequiredMessage_iditenspedidos}"/>
+                        <p:outputLabel value="#{bundle.CreateItenspedidoLabel_quantidade}" for="quantidade" />
+                        <p:inputText id="quantidade" value="#{itenspedidoController.selected.quantidade}" title="#{bundle.CreateItenspedidoTitle_quantidade}" />
+                        <p:outputLabel value="#{bundle.CreateItenspedidoLabel_pedidoIdpedidos}" for="pedidoIdpedidos" />
+                        <p:selectOneMenu id="pedidoIdpedidos" value="#{itenspedidoController.selected.pedidoIdpedidos}" required="true" requiredMessage="#{bundle.EditItenspedidoRequiredMessage_pedidoIdpedidos}">
+                            <f:selectItems value="#{pedidoController.itemsAvailableSelectOne}"
+                                           var="pedidoIdpedidosItem"
+                                           itemValue="#{pedidoIdpedidosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateItenspedidoLabel_produtoIdprodutos}" for="produtoIdprodutos" />
+                        <p:selectOneMenu id="produtoIdprodutos" value="#{itenspedidoController.selected.produtoIdprodutos}" required="true" requiredMessage="#{bundle.EditItenspedidoRequiredMessage_produtoIdprodutos}">
+                            <f:selectItems value="#{produtoController.itemsAvailableSelectOne}"
+                                           var="produtoIdprodutosItem"
+                                           itemValue="#{produtoIdprodutosItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{itenspedidoController.create}" value="#{bundle.Save}" update="display,:ItenspedidoListForm:datalist,:growl" oncomplete="handleSubmit(args,'ItenspedidoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ItenspedidoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

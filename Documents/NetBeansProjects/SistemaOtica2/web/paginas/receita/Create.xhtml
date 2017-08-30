@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReceitaCreateDlg" widgetVar="ReceitaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateReceitaTitle}">
+            <h:form id="ReceitaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{receitaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_idreceitas}" for="idreceitas" />
+                        <p:inputText id="idreceitas" value="#{receitaController.selected.idreceitas}" title="#{bundle.CreateReceitaTitle_idreceitas}" required="true" requiredMessage="#{bundle.CreateReceitaRequiredMessage_idreceitas}"/>
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_data}" for="data" />
+                        <p:calendar id="data" pattern="MM/dd/yyyy" value="#{receitaController.selected.data}" title="#{bundle.EditReceitaTitle_data}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_dnpod}" for="dnpod" />
+                        <p:inputText id="dnpod" value="#{receitaController.selected.dnpod}" title="#{bundle.CreateReceitaTitle_dnpod}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_dnpoe}" for="dnpoe" />
+                        <p:inputText id="dnpoe" value="#{receitaController.selected.dnpoe}" title="#{bundle.CreateReceitaTitle_dnpoe}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_aco}" for="aco" />
+                        <p:inputText id="aco" value="#{receitaController.selected.aco}" title="#{bundle.CreateReceitaTitle_aco}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_dpa}" for="dpa" />
+                        <p:inputText id="dpa" value="#{receitaController.selected.dpa}" title="#{bundle.CreateReceitaTitle_dpa}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_dm}" for="dm" />
+                        <p:inputText id="dm" value="#{receitaController.selected.dm}" title="#{bundle.CreateReceitaTitle_dm}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_vert}" for="vert" />
+                        <p:inputText id="vert" value="#{receitaController.selected.vert}" title="#{bundle.CreateReceitaTitle_vert}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_ad}" for="ad" />
+                        <p:inputText id="ad" value="#{receitaController.selected.ad}" title="#{bundle.CreateReceitaTitle_ad}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_lodesf}" for="lodesf" />
+                        <p:inputText id="lodesf" value="#{receitaController.selected.lodesf}" title="#{bundle.CreateReceitaTitle_lodesf}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_lodcil}" for="lodcil" />
+                        <p:inputText id="lodcil" value="#{receitaController.selected.lodcil}" title="#{bundle.CreateReceitaTitle_lodcil}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_lodeixo}" for="lodeixo" />
+                        <p:inputText id="lodeixo" value="#{receitaController.selected.lodeixo}" title="#{bundle.CreateReceitaTitle_lodeixo}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_loeesf}" for="loeesf" />
+                        <p:inputText id="loeesf" value="#{receitaController.selected.loeesf}" title="#{bundle.CreateReceitaTitle_loeesf}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_loecil}" for="loecil" />
+                        <p:inputText id="loecil" value="#{receitaController.selected.loecil}" title="#{bundle.CreateReceitaTitle_loecil}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_loeeixo}" for="loeeixo" />
+                        <p:inputText id="loeeixo" value="#{receitaController.selected.loeeixo}" title="#{bundle.CreateReceitaTitle_loeeixo}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_podesf}" for="podesf" />
+                        <p:inputText id="podesf" value="#{receitaController.selected.podesf}" title="#{bundle.CreateReceitaTitle_podesf}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_podcil}" for="podcil" />
+                        <p:inputText id="podcil" value="#{receitaController.selected.podcil}" title="#{bundle.CreateReceitaTitle_podcil}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_podeixo}" for="podeixo" />
+                        <p:inputText id="podeixo" value="#{receitaController.selected.podeixo}" title="#{bundle.CreateReceitaTitle_podeixo}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_poeesf}" for="poeesf" />
+                        <p:inputText id="poeesf" value="#{receitaController.selected.poeesf}" title="#{bundle.CreateReceitaTitle_poeesf}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_poecil}" for="poecil" />
+                        <p:inputText id="poecil" value="#{receitaController.selected.poecil}" title="#{bundle.CreateReceitaTitle_poecil}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_poeeixo}" for="poeeixo" />
+                        <p:inputText id="poeeixo" value="#{receitaController.selected.poeeixo}" title="#{bundle.CreateReceitaTitle_poeeixo}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_observacao}" for="observacao" />
+                        <p:inputText id="observacao" value="#{receitaController.selected.observacao}" title="#{bundle.CreateReceitaTitle_observacao}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_obsreceita}" for="obsreceita" />
+                        <p:inputText id="obsreceita" value="#{receitaController.selected.obsreceita}" title="#{bundle.CreateReceitaTitle_obsreceita}" />
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_clienteIdclientes}" for="clienteIdclientes" />
+                        <p:selectOneMenu id="clienteIdclientes" value="#{receitaController.selected.clienteIdclientes}" required="true" requiredMessage="#{bundle.EditReceitaRequiredMessage_clienteIdclientes}">
+                            <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"
+                                           var="clienteIdclientesItem"
+                                           itemValue="#{clienteIdclientesItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_medicoIdmedicos}" for="medicoIdmedicos" />
+                        <p:selectOneMenu id="medicoIdmedicos" value="#{receitaController.selected.medicoIdmedicos}" required="true" requiredMessage="#{bundle.EditReceitaRequiredMessage_medicoIdmedicos}">
+                            <f:selectItems value="#{medicoController.itemsAvailableSelectOne}"
+                                           var="medicoIdmedicosItem"
+                                           itemValue="#{medicoIdmedicosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateReceitaLabel_usuarioIdusuarios}" for="usuarioIdusuarios" />
+                        <p:selectOneMenu id="usuarioIdusuarios" value="#{receitaController.selected.usuarioIdusuarios}" required="true" requiredMessage="#{bundle.EditReceitaRequiredMessage_usuarioIdusuarios}">
+                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
+                                           var="usuarioIdusuariosItem"
+                                           itemValue="#{usuarioIdusuariosItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{receitaController.create}" value="#{bundle.Save}" update="display,:ReceitaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ReceitaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ReceitaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

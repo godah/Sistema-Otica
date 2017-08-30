@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsuarioCreateDlg" widgetVar="UsuarioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateUsuarioTitle}">
+            <h:form id="UsuarioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_idusuarios}" for="idusuarios" />
+                        <p:inputText id="idusuarios" value="#{usuarioController.selected.idusuarios}" title="#{bundle.CreateUsuarioTitle_idusuarios}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_idusuarios}"/>
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{usuarioController.selected.nome}" title="#{bundle.CreateUsuarioTitle_nome}" />
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_senha}" for="senha" />
+                        <p:inputText id="senha" value="#{usuarioController.selected.senha}" title="#{bundle.CreateUsuarioTitle_senha}" />
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_setor}" for="setor" />
+                        <p:inputText id="setor" value="#{usuarioController.selected.setor}" title="#{bundle.CreateUsuarioTitle_setor}" />
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_admin}" for="admin" />
+                        <p:selectBooleanCheckbox id="admin" value="#{usuarioController.selected.admin}" />
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_online}" for="online" />
+                        <p:selectBooleanCheckbox id="online" value="#{usuarioController.selected.online}" />
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_ultimologin}" for="ultimologin" />
+                        <p:calendar id="ultimologin" pattern="MM/dd/yyyy HH:mm:ss" value="#{usuarioController.selected.ultimologin}" title="#{bundle.EditUsuarioTitle_ultimologin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_telaatual}" for="telaatual" />
+                        <p:inputText id="telaatual" value="#{usuarioController.selected.telaatual}" title="#{bundle.CreateUsuarioTitle_telaatual}" />
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_ip}" for="ip" />
+                        <p:inputText id="ip" value="#{usuarioController.selected.ip}" title="#{bundle.CreateUsuarioTitle_ip}" />
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_telefone}" for="telefone" />
+                        <p:inputText id="telefone" value="#{usuarioController.selected.telefone}" title="#{bundle.CreateUsuarioTitle_telefone}" />
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_sessao}" for="sessao" />
+                        <p:inputText id="sessao" value="#{usuarioController.selected.sessao}" title="#{bundle.CreateUsuarioTitle_sessao}" />
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_empresaIdempresas}" for="empresaIdempresas" />
+                        <p:selectOneMenu id="empresaIdempresas" value="#{usuarioController.selected.empresaIdempresas}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_empresaIdempresas}">
+                            <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"
+                                           var="empresaIdempresasItem"
+                                           itemValue="#{empresaIdempresasItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{usuarioController.create}" value="#{bundle.Save}" update="display,:UsuarioListForm:datalist,:growl" oncomplete="handleSubmit(args,'UsuarioCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UsuarioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

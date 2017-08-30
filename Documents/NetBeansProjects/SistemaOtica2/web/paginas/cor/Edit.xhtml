@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CorEditDlg" widgetVar="CorEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCorTitle}">
+            <h:form id="CorEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{corController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCorLabel_idcor}" for="idcor" />
+                        <p:inputText id="idcor" value="#{corController.selected.idcor}" title="#{bundle.EditCorTitle_idcor}" required="true" requiredMessage="#{bundle.EditCorRequiredMessage_idcor}"/>
+                        <p:outputLabel value="#{bundle.EditCorLabel_cor}" for="cor" />
+                        <p:inputText id="cor" value="#{corController.selected.cor}" title="#{bundle.EditCorTitle_cor}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{corController.update}" value="#{bundle.Save}" update="display,:CorListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CorEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CorEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

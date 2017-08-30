@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MedicoEditDlg" widgetVar="MedicoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMedicoTitle}">
+            <h:form id="MedicoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{medicoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMedicoLabel_idmedicos}" for="idmedicos" />
+                        <p:inputText id="idmedicos" value="#{medicoController.selected.idmedicos}" title="#{bundle.EditMedicoTitle_idmedicos}" required="true" requiredMessage="#{bundle.EditMedicoRequiredMessage_idmedicos}"/>
+                        <p:outputLabel value="#{bundle.EditMedicoLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{medicoController.selected.nome}" title="#{bundle.EditMedicoTitle_nome}" />
+                        <p:outputLabel value="#{bundle.EditMedicoLabel_contato}" for="contato" />
+                        <p:inputText id="contato" value="#{medicoController.selected.contato}" title="#{bundle.EditMedicoTitle_contato}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{medicoController.update}" value="#{bundle.Save}" update="display,:MedicoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MedicoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MedicoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
